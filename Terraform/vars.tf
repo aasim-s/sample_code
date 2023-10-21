@@ -14,7 +14,7 @@ variable "ZONE" {
 variable "AMI" {
   type = map(any)
   default = {
-    region1 = "ami-067c21fb1979f0b27"
+    ap-south-1 = "ami-067c21fb1979f0b27"
     region2 = ""
     region3 = ""
   }
@@ -30,7 +30,7 @@ variable "TYPE" {
 }
 
 variable "USER" {
-  default = "ubuntu"
+  default = "ec2-user"
 }
 
 variable "MY_IP" {

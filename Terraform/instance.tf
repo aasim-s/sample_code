@@ -1,13 +1,13 @@
 resorce "aws_key_pair" "security-key" {
 	key_name = "sample-key"
-	public_key = file("<public_key_file_name>.pub")
+	public_key = file("dove-key.pub")
 }
 
 
 resource "aws_security_group" "sample-sg" {
 	name = "sample-sg"
 	description = "Sample security group"
-	#vpc_id = "#give vpc id"
+	#vpc_id = "give vpc id"
 
 	ingress {
 		from_port = 22
@@ -33,7 +33,7 @@ resource "aws_security_group" "sample-sg" {
 
 resource "aws_instance" "my-instance" {
 	ami = var.AMI[var.REGION]
-	#vpc_id = "#give vpc id"
+	#vpc_id = "give vpc id"
 	availability_zone = var.ZONE[1]
 	instance_type = var.TYPE[1]
 	key_name = aws_key_pair.security-key.key_name
@@ -45,19 +45,19 @@ resource "aws_instance" "my-instance" {
 
 	provisioner "file" {
 		source = "web.sh"
-		destination = "/temp/web.sh"
+		destination = "/tmp/web.sh"
 	}
 
 	provisioner "remote-exec" {
 		inline = [
-			"chmond u+x/temp/web.sh",
-			"sudo /temp/web.sh"
+			"chmond u+x /tmp/web.sh",
+			"sudo sh /tmp/web.sh"
 		]
 	}
 
 	connection {
 		user = var.USER
-		private_key = file("<private_key_file_name>")
+		private_key = file("dove-key")
 		host = self.public_ip
 	}
 }
