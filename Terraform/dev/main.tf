@@ -21,3 +21,8 @@ module "my_instance" {
   MY_IP     = "125.21.225.166/32"
   FILE_NAME = "web.sh"
 }
+
+output "instance-public-ip" {
+  value = module.my_instance.instance-public-ip
+}
+

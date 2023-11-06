@@ -34,7 +34,7 @@ resource "aws_security_group" "sample-sg" {
 resource "aws_instance" "my-instance" {
 	ami = var.AMI[var.REGION]
 	subnet_id = var.SUBNET_ID
-	availability_zone = var.ZONE[1]
+
 	instance_type = var.TYPE[1]
 	key_name = aws_key_pair.security-key.key_name
 	vpc_security_group_ids = [aws_security_group.sample-sg.id]
