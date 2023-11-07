@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vprodb
+  labels:
+    app: vprodb
+spec:
+  containers:
+    - name: vprodb
+      image: sample/vprodb
+      ports:
+        - name: vprodb-port
+          containerPort: 3306
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "vprodbpass"
