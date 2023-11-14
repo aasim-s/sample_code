@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: vproapp-service
 spec:
+  type: NodePort
   ports:
     - port: 30001
       nodePort: 30001
       targetPort: vproapp-port 
   selector:
     app: vproapp
-  type: NodePort
+ 

@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: vprodb
 spec:
+  type: NodePort
   ports:
     - port: 3306
       nodePort: 30003
@@ -10,4 +11,4 @@ spec:
       protocol: TCP
     selector:
       app: vprodb
-    type: NodePort
+    

@@ -32,13 +32,14 @@ kind: Service
 metadata:
   name: vproapp-service
 spec:
+  type: LoadBalancer
   ports:
     - port: 80
       targetPort: vproapp-port
       protocol: TCP
   selector:
     app: vproapp
-  type: LoadBalancer
+  
 
 ---
 apiVersion: autoscaling/v1
